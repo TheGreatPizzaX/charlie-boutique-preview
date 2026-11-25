@@ -13,4 +13,55 @@ const price=v=>Number(v.sale_price??v.price);const min=p=>Math.min(...p.product_
 function render(){const q=$('search').value.trim().toLowerCase();const list=products.filter(p=>(!active||belongs(p.category_id,active))&&(!selected.size||[...selected].some(c=>belongs(p.category_id,c)))&&[p.name,p.brand].join(' ').toLowerCase().includes(q));if($('sort').value==='low')list.sort((a,b)=>min(a)-min(b));if($('sort').value==='high')list.sort((a,b)=>min(b)-min(a));const box=$('products');box.replaceChildren();if(!list.length){box.append(node('div','לא נמצאו מוצרים מתאימים','empty'));return;}for(const p of list){const card=node('article',null,'product'),photo=node('div',null,'photo'),body=node('div',null,'pbody');try{const u=new URL(p.image_url);if(u.origin===base&&u.pathname.startsWith('/storage/v1/object/public/product-images/')){const img=node('img');img.src=u.href;img.alt=p.name;img.loading='lazy';photo.append(img);}}catch{}if(!photo.childNodes.length)photo.textContent='🐾';body.append(node('small',p.brand||''),node('h3',p.name));if(p.description){const details=node('details');details.append(node('summary','פרטי המוצר'),node('p',p.description,'desc'));body.append(details);}const variants=p.product_variants;const select=node('select',null,'variant');select.setAttribute('aria-label','גודל או משקל');variants.forEach((v,i)=>{const o=node('option',v.size);o.value=i;select.append(o)});if(variants.length)body.append(select);const cost=node('div',null,'price'),stock=node('div',null,'stock'),button=node('button','הזמנות יופעלו בהמשך','btn');button.disabled=true;function update(){const v=variants[Number(select.value)];cost.replaceChildren();if(v){if(v.sale_price!=null&&Number(v.sale_price)<Number(v.price)){const old=node('del',money(Number(v.price)));old.style.fontSize='14px';cost.append(old,document.createTextNode(' '));}cost.append(document.createTextNode(money(price(v))));}else cost.textContent='מחיר בבירור';stock.textContent=v?.in_stock?'● זמין במלאי':'● אזל מהמלאי';stock.className='stock'+(v?.in_stock?'':' out');button.textContent=v?.in_stock?'הזמנות יופעלו בהמשך':'לא זמין להזמנה';}select.onchange=update;update();body.append(cost,stock,button);card.append(photo,body);box.append(card);}}
 $('year').textContent=new Date().getFullYear();$('search').oninput=render;$('sort').onchange=render;
 (async()=>{try{$('products').textContent='טוען מוצרים...';[cats,products]=await Promise.all([get('categories','select=id,name,parent_id&order=name'),get('products','select=id,name,brand,description,category_id,image_url,product_variants(id,size,price,sale_price,in_stock)&is_active=eq.true&order=created_at.desc')]);filters();render();}catch(e){$('products').textContent='לא ניתן לטעון את הקטלוג כרגע. נסו לרענן את העמוד.';console.error(e);}})();
-</script></body></html>
+const originalRender = render;
+
+render = function () {
+  originalRender();
+
+  document.querySelectorAll('.product').forEach(card => {
+    const button = card.querySelector('button');
+    const stock = card.querySelector('.stock');
+    const select = card.querySelector('.variant');
+
+    function updateWhatsApp() {
+      const available = !stock.classList.contains('out');
+      button.disabled = !available;
+      button.textContent = available
+        ? 'הזמנה בוואטסאפ'
+        : 'אזל מהמלאי';
+    }
+
+    button.onclick = () => {
+      const name = card.querySelector('h3').textContent;
+      const size = select?.selectedOptions[0]?.textContent || '';
+      const price = card.querySelector('.price').textContent;
+
+      const message = `שלום צ׳ארלי בוטיק 🐾
+אשמח להזמין:
+${name}
+${size}
+מחיר: ${price}`;
+
+      window.open(
+        'https://wa.me/972546375055?text=' +
+        encodeURIComponent(message),
+        '_blank',
+        'noopener,noreferrer'
+      );
+    };
+
+    select?.addEventListener('change', updateWhatsApp);
+    updateWhatsApp();
+  });
+};
+
+$('search').oninput = render;
+$('sort').onchange = render;
+
+document.querySelector('main > div').textContent =
+  'קטלוג המוצרים שלנו · הזמנות בוואטסאפ ובטלפון';
+
+document.querySelector('footer').insertAdjacentHTML(
+  'beforeend',
+  '<p><a style="color:white" href="tel:0546375055">טלפון: 054-6375055</a> | <a style="color:white" href="https://wa.me/972546375055">וואטסאפ</a></p>'
+);</script></body></html>
