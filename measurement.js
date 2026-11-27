@@ -215,16 +215,28 @@
     const status = box.querySelector('[role=status]');
     const staff = box.querySelector('input');
     const hide = () => { box.hidden = true; open.setAttribute('aria-expanded', 'false'); };
+    let copy;
     function sync() {
+      if (!copy) return;
       const state = measurement.state();
       staff.checked = state.staff;
-      box.querySelector('[data-metrics-deny]').textContent = state.consent === 'yes' ? 'ביטול הסכמה' : 'ללא מדידה';
+      box.querySelector('[data-metrics-deny]').textContent = state.consent === 'yes' ? copy.withdraw : copy.deny;
       box.querySelector('[data-metrics-allow]').disabled = state.gpc;
-      status.textContent = state.gpc ? 'הדפדפן מבקש שלא למדוד שימוש.' : state.staff
-        ? 'ביקור צוות: המדידה כבויה.' : state.consent === 'yes'
-          ? 'מדידת שימוש מאופשרת בהסכמתך.' : state.consent === 'no' ? 'הבחירה שלך: ללא מדידה.' : 'ממתינים לבחירתך.';
+      status.textContent = state.gpc ? copy.gpc : state.staff ? copy.internal :
+        state.consent === 'yes' ? copy.yes : state.consent === 'no' ? copy.no : copy.pending;
     }
-    sync();
+    function localize(labels, language) {
+      copy = labels;
+      box.lang = open.lang = language;
+      box.dir = open.dir = language === 'he' ? 'rtl' : 'ltr';
+      open.textContent = box.querySelector('#measurementTitle').textContent = labels.prefs;
+      box.querySelector('#measurementNotice').textContent = labels.notice + ' ' + labels.choice;
+      box.querySelector('[data-metrics-details]').textContent = labels.details;
+      box.querySelector('a[href*="privacy"]').textContent = labels.privacy;
+      box.querySelector('[data-metrics-staff]').textContent = labels.staff;
+      box.querySelector('[data-metrics-allow]').textContent = labels.allow;
+      sync();
+    }
     open.hidden = false;
     box.hidden = measurement.state().consent !== null || measurement.state().gpc;
     open.setAttribute('aria-expanded', String(!box.hidden));
@@ -237,7 +249,7 @@
     box.querySelector('[data-metrics-deny]').onclick = () => { measurement.setConsent(false); sync(); hide(); open.focus(); };
     staff.onchange = () => { measurement.setStaff(staff.checked); sync(); };
     root.addEventListener('storage', sync);
-    return measurement;
+    return { ...measurement, localize };
   }
 
   if (typeof module !== 'undefined' && module.exports) module.exports = { create, sourceFor, prefix };
