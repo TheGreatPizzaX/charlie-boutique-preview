@@ -43,10 +43,10 @@
 <section class="measurement-preferences" id="measurementPreferences" hidden tabindex="-1" aria-labelledby="measurementTitle" aria-describedby="measurementNotice">
 <h2 id="measurementTitle">העדפות מדידת שימוש</h2>
 <p id="measurementNotice">צ׳ארלי בוטיק מבקשת את הסכמתך למדוד ביקורים, צפיות במוצרים, הוספות לסל ולחיצות ל־WhatsApp, לצד סוג מכשיר כללי, קטגוריית מקור הגעה ומזהה דפדפן אקראי. מטרת המדידה היא להבין מה מעניין את המבקרים ולשפר את חוויית הקנייה. ההסכמה לבחירתך. סירוב אינו מגביל את השימוש בקטלוג, בסל או בהזמנה.</p>
-<p><span data-metrics-details></span> <a href="mailto:charlieboutique12@gmail.com">charlieboutique12@gmail.com</a>. <a href="./privacy.html">מדיניות הפרטיות המלאה</a>.</p>
+<p>נתוני המדידה מועברים ל־Supabase לצורך קליטה ואחסון. הדוחות זמינים למנהלים מורשים. אפשר לשנות את הבחירה או לבטל את ההסכמה בכל עת ב״העדפות פרטיות״. לפניות פרטיות ולמימוש זכויות עיון ותיקון ניתן לפנות לאלכסנדר אטוס מטעם צ׳ארלי בוטיק, בדוא״ל <a href="mailto:charlieboutique12@gmail.com">charlieboutique12@gmail.com</a>. <a href="./privacy.html">מדיניות הפרטיות המלאה</a>.</p>
 <div class="measurement-actions"><button class="btn" type="button" data-metrics-allow>אישור מדידה</button>
 <button class="btn" type="button" data-metrics-deny>ללא מדידה</button></div>
-<label><input type="checkbox"> <span data-metrics-staff></span></label><p role="status"></p>
+<label><input type="checkbox"> ביקור צוות · החרגה ממדידה בדפדפן זה</label><p role="status"></p>
 </section><div style="max-width:1180px;margin:18px auto;padding:12px 24px;background:#f3ead9;border-radius:8px;color:#69533c">קטלוג המוצרים שלנו · הזמנות בוואטסאפ ובטלפון</div><section class="hero"><div class="hero-copy"><div class="eyebrow">PREMIUM PET BOUTIQUE · ASHKELON</div><h1>כי גם להם<br>מגיע הטוב ביותר.</h1><p>מזון איכותי, חטיפים, צעצועים ואביזרים לחיות מחמד — הכול באהבה לחברים הכי טובים שלנו.</p><a class="btn gold hero-link" href="#catalog">לגלות את המוצרים ←</a></div><div class="hero-art"><div class="paw">🐶</div></div></section><section class="wrap" id="catalog" tabindex="-1"><div class="section-head"><div><div class="eyebrow">OUR COLLECTION</div><h2>המוצרים שלנו</h2><div class="sub">מגלים את המוצרים והמחירים שלנו</div></div><div class="toolbar"><input id="search" aria-label="חיפוש מוצר או מותג" placeholder="🔎 חיפוש מוצר או מותג" ><select id="sort" aria-label="מיון מוצרים" ><option value="default">מיון: ברירת מחדל</option><option value="low">מחיר: מהנמוך לגבוה</option><option value="high">מחיר: מהגבוה לנמוך</option></select></div></div><div id="categories" class="categories"></div><div id="filters" class="filters"></div><div id="products" class="grid"></div></section></main><div class="overlay" id="cartOverlay"><section class="modal" role="dialog" aria-label="סל קניות"><div class="modal-head"><h2>סל הקניות שלי</h2><button class="mini" id="cartClose">סגירה</button></div><div id="cartItems"></div><div id="cartTotal"></div><button class="btn" id="checkout">שליחת הזמנה בוואטסאפ</button></section></div><footer class="store-footer">
   <p>© <span id="year"></span> צ׳ארלי בוטיק · כל הזכויות שמורות</p>
   <address id="storeContact" tabindex="-1">בקעת רימון 3 ב׳, שכונת אגמים, אשקלון
@@ -74,7 +74,7 @@ const liveStore=location.origin==='https://thegreatpizzax.github.io' && location
 if(!liveStore) throw new Error('Store environment is not configured');
 const base=liveBase;
 const key=liveKey;
-const measurementEnabled=true;
+const measurementEnabled=false;
 const purchaseTermsEnabled=false;
 const measurement=measurementEnabled ? window.CharlieMeasurement?.mount(base+'/functions/v1/analytics-ingest') : undefined;
 if(measurement)document.getElementById('privacyPreferencesLink').hidden=true;

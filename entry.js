@@ -6,20 +6,8 @@
   const words = {
     he: {
       language:'שפה',title:'ברוכים הבאים לצ׳ארלי בוטיק 🐾',
-      notice: "רק בהסכמתכם נמדוד ביקורים, צפיות במוצרים, הוספות לסל ולחיצות ל־WhatsApp, כדי לשפר את החנות. המדידה משתמשת במזהה דפדפן אקראי ואינה כוללת שם, טלפון או תוכן הזמנה.",
-      choice: "אפשר לקנות גם ללא מדידה ולשנות את הבחירה בכל עת דרך ״העדפות פרטיות״ בתחתית האתר.",
-      policyLead: " לפרטים נוספים, ראו",
-      prefs: "העדפות פרטיות",
-      allow: "אישור מדידה",
-      deny: "ללא מדידה",
-      withdraw: "ביטול הסכמה",
-      staff: "ביקור צוות · החרגה ממדידה בדפדפן זה",
-      gpc: "הדפדפן מבקש שלא למדוד שימוש.",
-      internal: "המדידה כבויה לביקור צוות.",
-      yes: "המדידה פעילה בהסכמתכם.",
-      no: "בחרתם להמשיך ללא מדידה.",
-      pending: "טרם בחרתם אם לאפשר מדידה.",
-      details: "המדידה כוללת גם סוג מכשיר כללי וקטגוריית מקור ההגעה. הנתונים נקלטים ונשמרים ב־Supabase. הדוחות זמינים למנהלים מורשים. לפניות פרטיות ולבקשות עיון ותיקון פנו לאלכסנדר אטוס בדוא״ל",
+      notice:'כדי לשפר את חוויית הקנייה באתר, נשמח לקבל את הסכמתכם למדידת שימוש באמצעות מזהה דפדפן אקראי. המדידה אינה כוללת שם, טלפון או פרטי הזמנה.',
+      rights:'הבחירה בידיכם, והיא אינה משפיעה על אפשרות הקנייה. ניתן לשנות אותה בכל עת. לפרטים נוספים, ראו',
       withStats:'כניסה עם סטטיסטיקה',withoutStats:'כניסה ללא סטטיסטיקה',links:'מידע על החנות',
       terms:'תנאי שימוש',privacy:'מדיניות פרטיות',returns:'ביטולים והחזרות',accessibility:'נגישות',contact:'יצירת קשר',
       orderTitle:'אישור תנאי הרכישה',readTerms:'קריאת תנאי הרכישה המלאים',accept:'קראתי ואני מאשר/ת את תנאי הרכישה.',
@@ -27,20 +15,8 @@
     },
     ru: {
       language:'Язык',title:'Добро пожаловать в Charlie Boutique 🐾',
-      notice: "Только с вашего согласия мы учитываем посещения, просмотры товаров, добавления в корзину и нажатия для перехода в WhatsApp, чтобы улучшать магазин. Используется случайный идентификатор браузера. Имя, телефон и содержание заказа в аналитику не входят.",
-      choice: "Покупки доступны и без аналитики. Выбор можно изменить в любое время в разделе «Настройки конфиденциальности» внизу страницы.",
-      policyLead: " Подробнее:",
-      prefs: "Настройки конфиденциальности",
-      allow: "Разрешить аналитику",
-      deny: "Без аналитики",
-      withdraw: "Отозвать согласие",
-      staff: "Визит сотрудника · исключить этот браузер из аналитики",
-      gpc: "Браузер запрашивает отключение аналитики.",
-      internal: "Аналитика отключена для сотрудника.",
-      yes: "Аналитика включена с вашего согласия.",
-      no: "Вы выбрали режим без аналитики.",
-      pending: "Вы ещё не выбрали режим аналитики.",
-      details: "Мы также учитываем общий тип устройства и категорию источника перехода. Данные поступают в Supabase и хранятся там. Отчёты доступны уполномоченным администраторам. По вопросам конфиденциальности, доступа и исправления данных пишите Александру Атосу:",
+      notice:'Чтобы улучшить покупки на сайте, просим разрешить измерение использования со случайным идентификатором браузера. Имена, номера телефонов и данные заказов в аналитику не входят.',
+      rights:'Выбор за вами и не влияет на покупки. Изменить его можно в любое время. Подробнее:',
       withStats:'Войти с аналитикой',withoutStats:'Войти без аналитики',links:'Информация о магазине',
       terms:'Условия',privacy:'Конфиденциальность',returns:'Возврат',accessibility:'Доступность',contact:'Контакты',
       orderTitle:'Подтверждение условий покупки',readTerms:'Прочитать условия покупки',accept:'Я ознакомился с условиями покупки и принимаю их.',
@@ -48,20 +24,8 @@
     },
     en: {
       language:'Language',title:'Welcome to Charlie Boutique 🐾',
-      notice: "Only with your permission, we measure visits, product views, cart additions and clicks to open WhatsApp to improve the store. Analytics uses a random browser identifier and excludes your name, phone number and order contents.",
-      choice: "You can shop without analytics and change your choice anytime under Privacy preferences in the footer.",
-      policyLead: " Learn more in our",
-      prefs: "Privacy preferences",
-      allow: "Allow analytics",
-      deny: "No analytics",
-      withdraw: "Withdraw consent",
-      staff: "Staff visit · exclude this browser from analytics",
-      gpc: "Your browser requests that analytics remain off.",
-      internal: "Analytics is off for this staff visit.",
-      yes: "Analytics is on with your permission.",
-      no: "You chose to shop without analytics.",
-      pending: "You have not chosen an analytics preference yet.",
-      details: "We also record the broad device type and referral category. Supabase receives and stores the data. Only authorized administrators can view reports. For privacy questions or requests to access or correct your data, email Alexander Atos at",
+      notice:'To improve shopping on this site, we’d like your permission to measure usage with a random browser identifier. Analytics excludes names, phone numbers and order details.',
+      rights:'Your choice does not affect shopping, and you can change it any time. For details, see the',
       withStats:'Enter with analytics',withoutStats:'Enter without analytics',links:'Store information',
       terms:'Terms',privacy:'Privacy policy',returns:'Returns',accessibility:'Accessibility',contact:'Contact',
       orderTitle:'Accept the purchase terms',readTerms:'Read the full purchase terms',accept:'I have read and accept the purchase terms.',
@@ -106,11 +70,10 @@
       for (const button of selector.querySelectorAll('[data-language]')) {
         button.setAttribute('aria-pressed', String(button.dataset.language === language));
       }
-      measurement?.localize(words[language], language);
       for (const container of [welcome,dialog]) {
         container.lang = language;
         container.dir = language === 'he' ? 'rtl' : 'ltr';
-        for (const node of container.querySelectorAll('[data-entry]')) node.textContent = node.dataset.entry === 'rights' ? words[language].choice + words[language].policyLead : words[language][node.dataset.entry];
+        for (const node of container.querySelectorAll('[data-entry]')) node.textContent = words[language][node.dataset.entry];
         for (const node of container.querySelectorAll('[data-entry-label]')) node.setAttribute('aria-label',words[language][node.dataset.entryLabel]);
       }
       for (const link of doc.querySelectorAll('a[href^="./privacy"],a[href^="./store-policies"]')) {
@@ -136,7 +99,7 @@
     el('entryAllow').hidden = !askForStatistics;
     el('entryMeasurement').hidden = !askForStatistics;
     let entered = state?.consent === 'yes' || state?.consent === 'no';
-    try { if (!askForStatistics) entered ||= storage?.getItem(enteredKey) === 'yes'; } catch {  }
+    try { entered ||= storage?.getItem(enteredKey) === 'yes'; } catch {  }
     let onEnter;
     function reveal(animate) {
       welcome.hidden = true;
