@@ -1,0 +1,101 @@
+.access-widget{
+  --access-gold:#F5C542;
+  --access-brown:#38251B;
+  --access-cream:#FFF8EC;
+  --access-line:#e9dcca;
+  position:fixed;
+  z-index:30;
+  inset-inline-start:max(14px,env(safe-area-inset-left));
+  inset-block-end:max(14px,env(safe-area-inset-bottom));
+  font:1rem/1.4 Arial,sans-serif;
+  color:var(--access-brown);
+}
+.access-widget *{box-sizing:border-box}
+.access-widget button{font:inherit;cursor:pointer}
+.access-icon{inline-size:22px;block-size:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.access-trigger{display:grid;place-items:center;inline-size:56px;block-size:56px;padding:0;border:1px solid #765b30;border-radius:50%;color:var(--access-gold);background:var(--access-brown);box-shadow:0 5px 16px #38251B38}
+.access-trigger:hover{background:#4c3326}
+.access-trigger .access-icon{inline-size:29px;block-size:29px;stroke-width:1.85}
+.access-panel{
+  position:absolute;
+  inset-inline-start:0;
+  inset-block-end:calc(100% + 10px);
+  inline-size:min(23rem,calc(100vw - 32px));
+  max-block-size:min(78dvh,calc(100dvh - 92px));
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:#c7aa78 transparent;
+  overscroll-behavior:contain;
+  overflow-wrap:anywhere;
+  border:1px solid var(--access-line);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 16px 40px #38251B26,0 3px 10px #38251B12;
+  opacity:1;
+  transform:translateY(0);
+  transition:opacity .18s ease,transform .18s ease,display .18s allow-discrete;
+}
+.access-panel[hidden]{display:none;opacity:0;transform:translateY(7px);pointer-events:none}
+@starting-style{.access-panel:not([hidden]){opacity:0;transform:translateY(7px)}}
+.access-banner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:10px 14px;background:var(--access-brown);color:#fff}
+.access-brand-icon{color:var(--access-gold)}
+.access-banner h2{margin:0;font-size:1.08rem;font-weight:750;line-height:1.25}
+.access-close{display:grid;place-items:center;inline-size:44px;block-size:44px;padding:0;color:#fff;background:transparent;border:1px solid #fff4;border-radius:11px}
+.access-close:hover{background:#fff2}
+.access-content{padding:14px}
+.access-text-area{padding:10px 12px 12px;border:1px solid var(--access-line);border-radius:13px;background:var(--access-cream);text-align:center}
+.access-text-area h3{margin:0 0 8px;font-size:.86rem}
+.access-size{display:grid;grid-template-columns:44px minmax(3rem,auto) 44px;justify-content:center;gap:10px;align-items:center}
+.access-size output{font-weight:700;font-variant-numeric:tabular-nums;direction:ltr}
+.access-size button{display:grid;place-items:center;inline-size:44px;block-size:44px;padding:0;border:1px solid var(--access-line);border-radius:11px;background:#fff;color:var(--access-brown)}
+.access-size button:disabled{opacity:.5;cursor:default}
+.access-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:8px;margin-block-start:12px}
+.access-controls button{
+  position:relative;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:5px;
+  min-block-size:70px;
+  min-inline-size:0;
+  padding:8px 10px;
+  border:1px solid var(--access-line);
+  border-radius:12px;
+  background:#fff;
+  color:var(--access-brown);
+  line-height:1.25;
+  font-size:.84rem;
+  text-align:center;
+}
+.access-controls button:hover,.access-size button:not(:disabled):hover{background:var(--access-cream);border-color:#c7a967}
+.access-controls [aria-pressed=true],.access-controls [aria-pressed=true]:hover{background:var(--access-gold);border-color:#a57405}
+.access-check{position:absolute;inset-inline-end:5px;inset-block-start:5px;inline-size:15px;block-size:15px;visibility:hidden;stroke-width:2.8}
+[aria-pressed=true] .access-check{visibility:visible}
+.access-footer{display:flex;justify-content:center;flex-wrap:wrap;gap:0 14px;padding:2px 12px 6px;border-block-start:1px solid var(--access-line);background:var(--access-cream)}
+.access-footer a{display:inline-flex;align-items:center;min-block-size:44px;color:#584026;text-decoration:underline;text-underline-offset:3px;font-size:.82rem}
+.access-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.access-widget :focus-visible{outline:3px solid #1769ac;outline-offset:2px}
+.access-banner :focus-visible,.access-trigger:focus-visible{outline-color:var(--access-gold)}
+#cartOverlay.open{padding-block-end:80px}
+#cartOverlay .modal{max-height:calc(100dvh - 96px)}
+#purchaseTerms .access-widget{position:static;margin-block-start:12px}
+#purchaseTerms .access-panel{position:relative;inset:auto;margin-block-start:8px;inline-size:100%;max-block-size:55dvh}
+@media(prefers-reduced-motion:reduce){.access-panel{transition:none!important}}
+html.access-gray{filter:grayscale(1)}
+html.access-links a{text-decoration:underline!important;text-decoration-thickness:.15em!important;text-underline-offset:.18em;font-weight:bold}
+html.access-font :where(body,button,input,select,textarea,output){font-family:Verdana,Arial,sans-serif!important;letter-spacing:normal}
+html.access-motion *,html.access-motion *::before,html.access-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.access-contrast :where(body,header,footer,main,article,section,dialog,.entry-card,.entry-inner,.product,.pbody,.photo,.hero,.hero-copy,.hero-art,.cart-row,.notice,.access-panel,.access-text-area,.access-footer){background:#111!important;color:#fff!important}
+html.access-contrast :where(body *){color:#fff!important;border-color:#e8d269!important}
+html.access-contrast :where(a,a *){color:#ffe66d!important;text-decoration:underline}
+html.access-contrast :where(button,input,select,summary,output){background:#161616!important;color:#fff!important;border:1px solid #ffe66d!important}
+html.access-contrast :where([aria-pressed=true],.chip.active){background:#ffe66d!important;color:#111!important}
+html.access-contrast :focus-visible{outline:3px solid #68e5ff!important;outline-offset:2px}
+
+.entry-card{padding-block-end:max(76px,5vw)}
+footer.store-footer,.policy-page{padding-block-end:76px}
+.policy-languages{margin-block-end:12px}
+.policy-page :where(p,a){overflow-wrap:anywhere}
+.policy-page a:focus-visible{outline:3px solid #76531f;outline-offset:3px}
+
+html.access-contrast .access-widget [aria-pressed=true] :where(span,svg,path){color:#111!important}

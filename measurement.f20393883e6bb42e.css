@@ -1,0 +1,51 @@
+.measurement-preferences{max-width:1180px;margin:16px auto;padding:14px 20px;background:var(--paper);border:1px solid var(--line);border-radius:7px}
+.measurement-preferences[hidden],.measurement-open[hidden]{display:none}
+.measurement-preferences h2{font-size:1.125rem;margin:0 0 8px}
+.measurement-preferences p{margin:6px 0;line-height:1.55}
+.measurement-preferences label{display:block;margin:9px 0;font-size:0.875rem}
+.measurement-actions{display:flex;flex-wrap:wrap;gap:8px;margin:9px 0}
+.measurement-open{color:inherit;background:none;border:0;text-decoration:underline;padding:5px}
+.measurement-open:focus-visible,.measurement-preferences :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.measurement-preferences{width:calc(100% - 32px);border-radius:12px;box-shadow:0 8px 24px #38291e12}
+.measurement-preferences a{color:var(--brown)}
+.measurement-actions .btn{flex:1 1 140px;min-height:44px;background:var(--brown);border-color:var(--brown);color:white}
+.measurement-actions .btn:hover:not(:disabled){background:#543d2f;border-color:#543d2f}
+.measurement-actions .btn:disabled{opacity:.55;cursor:default}
+footer a{color:inherit}
+.store-footer nav{margin-block:12px}
+.store-footer ul{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 16px;list-style:none;margin:0;padding:0}
+.store-footer nav a:not([hidden]),.store-footer .measurement-open:not([hidden]){display:inline-flex;align-items:center;min-height:44px;padding-inline:4px}
+.store-footer a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.store-footer address{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 16px;font-style:normal;overflow-wrap:anywhere}
+.store-footer address a{padding-block:8px}
+.hero-link{display:inline-block;text-decoration:none}
+:where(a,button,input,select,summary):focus-visible{outline:2px solid #76531f;outline-offset:3px}
+.store-footer :focus-visible{outline-color:#f5d174}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+.hero-link{color:#261b14}
+.pbody small{color:#76531f}
+.entry-card{display:grid;place-items:center;min-height:100vh;min-height:100dvh;width:100%;padding:clamp(20px,5vw,48px);background:#fff;color:var(--brown);text-align:center;line-height:1.6}
+.entry-card[hidden],.entry-card [hidden]{display:none}
+.entry-brand{display:grid;justify-items:center;gap:4px;font-weight:800;letter-spacing:.03em;font-size:clamp(1.15rem,4vw,1.7rem);color:#38291e}.entry-brand span[aria-hidden]{font-size:2rem;line-height:1}
+.entry-language{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-block:20px}
+.entry-card h1,#purchaseTerms h2{margin-block:12px}
+.entry-card a,#purchaseTerms a{color:#634413}
+.entry-choices,.entry-links{display:flex;gap:8px;flex-wrap:wrap;margin-block:12px}
+.entry-choices .btn{flex:1 1 190px;min-height:44px;margin:0}
+.entry-links a{display:inline-flex;align-items:center;min-height:44px;padding-inline:5px}
+#purchaseTerms{box-sizing:border-box;width:min(520px,calc(100% - 32px));padding:24px;border:1px solid var(--line);border-radius:16px;color:var(--brown);background:#fff;line-height:1.6}
+#purchaseTerms::backdrop{background:#261b1488}
+.entry-check{display:flex;align-items:center;gap:10px;padding-block:14px}
+
+#storeContent[hidden]{display:none}
+body:has(#storeEntry:not([hidden])){background:#fff}
+.entry-inner{width:min(100%,560px)}
+.entry-card h1{font-size:clamp(1.5rem,5vw,2rem);line-height:1.3}
+.entry-card p{margin:10px auto;color:#594837}
+.entry-language button{min-height:44px;border:1px solid #dfd0bb;border-radius:999px;padding:6px 14px;background:white;color:var(--brown)}
+.entry-language button[aria-pressed=true]{background:#f5e7ca;border-color:#ad8545;font-weight:bold}
+.entry-card .entry-choices,.entry-card .entry-links{justify-content:center}
+.entry-card .entry-choices .btn{flex:1 1 190px;max-width:270px}
+.entry-reveal{animation:store-reveal .24s ease-out both}
+@keyframes store-reveal{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.entry-reveal{animation:none!important}}
